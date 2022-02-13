@@ -1,0 +1,66 @@
+  gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x822: file p1final.c, line 17.
+(gdb) r
+Starting program: /home/runner/IA2-Test1-Session2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p1final.c:17
+17  {
+(gdb) s
+19    input(&a,&b);
+(gdb) n
+enter base and height
+4
+6
+20    find_area(a,b,&c);
+(gdb) s
+find_area (base=4, height=6, area=0x7ffc68006c54) at p1final.c:10
+10   *area =0.5*base*height;
+(gdb) n
+11  }
+(gdb) s
+main () at p1final.c:21
+21    output(a,b,c);
+(gdb) s
+output (base=4, height=6, area=12) at p1final.c:14
+14   printf("the area of %f %f triangle is %f\n ",base,height,area);
+(gdb) p base
+$1 = 4
+(gdb) p height
+$2 = 6
+(gdb) p area
+$3 = 12
+(gdb) n
+the area of 4.000000 6.000000 triangle is 12.000000
+15  }
+(gdb) n
+main () at p1final.c:22
+22    return 0;
+(gdb) c
+Continuing.
+ [Inferior 1 (process 102) exited normally]
+(gdb) l
+17  {
+18    float a,b,c;
+19    input(&a,&b);
+20    find_area(a,b,&c);
+21    output(a,b,c);
+22    return 0;
+23
+24  }(gdb) q
